@@ -1,92 +1,145 @@
 <script src="./index.ts"></script>
 
 <h2>RXJS operators</h2>
-<a href="#tap">tap</a><br>
-<a href="#map">map</a><br>
-<a href="#filter">filter</a><br>
-<a href="#take">take and takeLast</a><br>
-<a href="#takewhile">takeWhile</a><br>
-<a href="#takeuntil">takeUntil</a><br>
-<a href="#scan-reduce">scan and reduce</a><br>
-<a href="#pairwise">pairWise</a><br>
-<a href="#mergemap">mergeMap, concatMap and switchMap</a><br>
-<a href="#startwith">startWith</a><br>
-<a href="#custom">Custom operators</a><br>
-<hr>
+<a href="#tap">tap</a><br />
+<a href="#map">map</a><br />
+<a href="#filter">filter</a><br />
+<a href="#take">take and takeLast</a><br />
+<a href="#takewhile">takeWhile</a><br />
+<a href="#takeuntil">takeUntil</a><br />
+<a href="#scan-reduce">scan and reduce</a><br />
+<a href="#pairwise">pairWise</a><br />
+<a href="#mergemap">mergeMap, concatMap and switchMap</a><br />
+<a href="#startwith">startWith</a><br />
+<a href="#custom">Custom operators</a><br />
+<a href="#apiCall">Custom API call</a><br />
+<hr />
 
 <h3 id="tap">tap</h3>
 <p>click start to see the button disabled and re-enabled after 2 seconds</p>
 <button id="btnStart_tap">Start</button>
 <span id="result_tap"></span>
-<hr>
+<hr />
 
 <h3 id="map">map</h3>
-<p>move your mouse on tha canvas below to draw, map was used to transform the mouse event into an object with only needed properties: offsetX, offsetY and ctx</p>
-<canvas id="canvas_map" width="400" height="200" style="background-color: lightskyblue;"></canvas>
-<hr>
+<p>
+  move your mouse on tha canvas below to draw, map was used to transform the
+  mouse event into an object with only needed properties: offsetX, offsetY and
+  ctx
+</p>
+<canvas
+  id="canvas_map"
+  width="400"
+  height="200"
+  style="background-color: lightskyblue;"
+></canvas>
+<hr />
 
 <h3 id="filter">filter</h3>
-<p>incrementing values are being emitted every 0.5 second but only prime value are being printed</p>
+<p>
+  incrementing values are being emitted every 0.5 second but only prime value
+  are being printed
+</p>
 <button id="btnStart_filter">Start</button>
 <button id="btnStop_filter">Stop</button>
 <span id="result_filter"></span>
-<hr>
+<hr />
 
 <h3 id="take">take and takeLast</h3>
-<p>obsevable is emiting a value very 0.5 second, take(10) is gonna make the observable complete after 10 emmitions, and takeLast(5) is gonna give us the last 5 value of our 10 emmitted values</p>
+<p>
+  obsevable is emiting a value very 0.5 second, take(10) is gonna make the
+  observable complete after 10 emmitions, and takeLast(5) is gonna give us the
+  last 5 value of our 10 emmitted values
+</p>
 <button id="btnStart_take">Start</button>
 <span id="result_take"></span>
-<hr>
+<hr />
 
 <h3 id="takewhile">takeWhile</h3>
-<p>takeWhile is like filter but as soon it hits the condition, the emition stops and the observable completes</p>
+<p>
+  takeWhile is like filter but as soon it hits the condition, the emition stops
+  and the observable completes
+</p>
 <button id="btnStart_takewhile">Start</button>
 <span id="result_takewhile"></span>
-<hr>
+<hr />
 
 <h3 id="takeuntil">takeUntil</h3>
-<p>takeuntil emits value and stops as soon as an other observable starts emitting</p>
+<p>
+  takeuntil emits value and stops as soon as an other observable starts emitting
+</p>
 <button id="btnStart_takeuntil">Start</button>
 <button id="btnStop_takeuntil">Stop</button>
 <span id="result_takeuntil"></span>
-<hr>
+<hr />
 
 <h3 id="scan-reduce">scan and reduce</h3>
-<p>scan emits a new value for every value it receives, and reduce emits one single value when obsevable completes</p>
-<button id="btnStart_scan">Start</button><br>
-<b>scan: </b><span id="result_scan"></span><br>
+<p>
+  scan emits a new value for every value it receives, and reduce emits one
+  single value when obsevable completes
+</p>
+<button id="btnStart_scan">Start</button><br />
+<b>scan: </b><span id="result_scan"></span><br />
 <b>reduce: </b><span id="result_reduce"></span>
-<hr>
+<hr />
 
 <h3 id="pairwise">pairWise</h3>
-<p>pairwise takes current emitted values and previouly emitted value emits them as a single wavlue, similar to bufferCount and bufferTime</p>
+<p>
+  pairwise takes current emitted values and previouly emitted value emits them
+  as a single wavlue, similar to bufferCount and bufferTime
+</p>
 <p>mouve your mouse in the canvas below to draw lines</p>
-<canvas id="canvas_pairwise" width="400" height="200" style="background-color: lightskyblue;"></canvas>
-<hr>
+<canvas
+  id="canvas_pairwise"
+  width="400"
+  height="200"
+  style="background-color: lightskyblue;"
+></canvas>
+<hr />
 
 <h3 id="mergemap">mergeMap, concatMap and switchMap</h3>
 <ul>
-  <li>mergemap combines an outer observable with an inner observale and emits a combination of both without paying attention to order</li>
-  <li>mergemap combines an outer observable with an inner observale and emits a combination of both and takes order in consideration</li>
-  <li>mergemap combines an outer observable with an inner observale and emits a combination of both, takes order in consideration and it intterupts upcoming value if new values from inner obsevable are being emitted</li>
+  <li>
+    mergemap combines an outer observable with an inner observale and emits a
+    combination of both without paying attention to order
+  </li>
+  <li>
+    mergemap combines an outer observable with an inner observale and emits a
+    combination of both and takes order in consideration
+  </li>
+  <li>
+    mergemap combines an outer observable with an inner observale and emits a
+    combination of both, takes order in consideration and it intterupts upcoming
+    value if new values from inner obsevable are being emitted
+  </li>
 </ul>
 <p>A represents outer obsevable and B represents inner observable</p>
 <button id="btnStart_mergamap">Start</button>
 <button id="reset">Reset</button>
-<br>
-<b>mergemap: </b><span id="result_mergemap"></span><br>
-<b>concatmap: </b><span id="result_concatmap"></span><br>
+<br />
+<b>mergemap: </b><span id="result_mergemap"></span><br />
+<b>concatmap: </b><span id="result_concatmap"></span><br />
 <b>switchmap: </b><span id="result_switchmap"></span>
-<hr>
+<hr />
 
 <h3 id="startwith">startWith</h3>
-<p>startWith makes your obsevable emits a starting value, in this example it makes the observable start with 'hey'</p>
+<p>
+  startWith makes your obsevable emits a starting value, in this example it
+  makes the observable start with 'hey'
+</p>
 <button id="btnStart_startwith">Start</button>
 <span id="result_startwith"></span>
-<hr>
+<hr />
 
 <h3 id="custom">Custom operators</h3>
 <p>a custom observable is created separatly in a file called isOdd.ts</p>
 <p>isOdd is a custom operator that emits only prime numbers</p>
-<button id="btnStart_custom">Start</button><br>
+<button id="btnStart_custom">Start</button><br />
 <span id="result_custom"></span>
+<hr />
+
+<h3 id="apiCall">Custom operators</h3>
+<p>a custom recurent api call</p>
+<p>combining an observable from timer() with another from an API call</p>
+<button id="btnStop_apiCall">Stop</button><br />
+<span id="result_apiCall"></span>
